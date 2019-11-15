@@ -1,8 +1,9 @@
-// main.rs
 #[macro_use]
+extern crate diesel;
 extern crate juniper;
 
 mod graphql_schema;
+mod schema;
 
 use std::io;
 use std::sync::Arc;
@@ -23,10 +24,6 @@ fn main() -> io::Result<()> {
     })
     .bind("localhost:8080")?
     .run()
-}
-
-fn index() -> impl Responder {
-  HttpResponse::Ok().body("Hello world!")
 }
 
 fn graphql(
